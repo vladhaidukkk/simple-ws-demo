@@ -1,5 +1,6 @@
 default: fmt fix
 
+# Code quality commands
 fmt:
     uv run ruff format
 
@@ -8,3 +9,6 @@ lint:
 
 fix:
     uv run ruff check --fix
+
+setup-githooks:
+    uv run pre-commit install
