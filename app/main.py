@@ -1,6 +1,7 @@
 from pathlib import Path
+from typing import Annotated
 
-from fastapi import FastAPI, Request, WebSocket, WebSocketDisconnect
+from fastapi import Cookie, Depends, FastAPI, Request, WebSocket, WebSocketDisconnect, WebSocketException, status
 from fastapi.responses import HTMLResponse
 from fastapi.staticfiles import StaticFiles
 from fastapi.templating import Jinja2Templates
@@ -24,12 +25,20 @@ async def index(request: Request):
 manager = ConnectionManager()
 
 
+def get_username(username: Annotated[str | None, Cookie()] = None):
+    if not username:
+        raise WebSocketException(code=status.WS_1008_POLICY_VIOLATION)
+    return username
+
+
 @app.websocket("/ws")
-async def websocket_endpoint(websocket: WebSocket):
+async def websocket_endpoint(websocket: WebSocket, username: Annotated[str, Depends(get_username)]):
     await manager.connect(websocket)
+    await manager.broadcast_text(f"User {username} joined the chat")
     try:
         while True:
             data = await websocket.receive_text()
-            await manager.broadcast_text(data)
+            await manager.broadcast_text(f"User {username} sent: {data}")
     except WebSocketDisconnect:
         manager.disconnect(websocket)
+        await manager.broadcast_text(f"User {username} left the chat")
