@@ -1,16 +1,25 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
     <head>
         <meta charset="UTF-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
         <title>Simple WebSocket Chat</title>
+        <link rel="stylesheet" href="/static/css/output.css" />
     </head>
-    <body>
-        <h1>WebSocket Chat</h1>
-        <form action="">
-            <input id="messageInput" type="text" autocomplete="off" />
-            <button>Send</button>
-        </form>
-        <ul id="messageList"></ul>
+    <body class="bg-slate-50">
+        <main class="container mx-auto flex flex-col gap-4 p-4">
+            <h1 class="text-3xl">WebSocket Chat</h1>
+            <div class="grid grid-cols-3 gap-4">
+                <form action="" class="col-span-1 flex flex-col gap-4 rounded border bg-slate-100 p-4 shadow-sm">
+                    <textarea
+                        id="messageInput"
+                        autocomplete="off"
+                        class="rounded border bg-slate-50 p-2 focus:border-violet-700 focus:outline-none focus:ring-1 focus:ring-violet-700"
+                    ></textarea>
+                    <button class="rounded border bg-violet-700 p-2 uppercase text-white transition-colors hover:bg-violet-600">Send</button>
+                </form>
+                <ul id="messageList" class="col-span-2"></ul>
+            </div>
+        </main>
     </body>
 </html>

@@ -14,9 +14,15 @@ Thumbs.db
 !.vscode/*.code-snippets
 !.vscode/*.code-workspace
 
-# Virtual environments
+# Python virtual environments
 .venv/
 
 # Python cache dirs and files
 __pycache__/
 *.py[cod]
+
+# Node environment
+node_modules/
+
+# Tailwind CSS output
+output.css
