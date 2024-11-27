@@ -1,5 +1,9 @@
 default: fmt fix
 
+# Startup commands
+dev host="127.0.0.1" port="8000":
+    uv run uvicorn app.main:app --host {{host}} --port {{port}} --reload
+
 # Code quality commands
 fmt:
     uv run ruff format
