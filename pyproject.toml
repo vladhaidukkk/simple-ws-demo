@@ -4,7 +4,11 @@ version = "0.1.0"
 description = "Demo on creating a simple WebSocket server with FastAPI"
 readme = "README.md"
 requires-python = ">=3.12"
-dependencies = ["fastapi>=0.115.5", "uvicorn[standard]>=0.32.1"]
+dependencies = [
+    "fastapi>=0.115.5",
+    "jinja2>=3.1.4",
+    "uvicorn[standard]>=0.32.1",
+]
 
 [dependency-groups]
 dev = ["pre-commit>=4.0.1", "ruff>=0.8.0"]
@@ -16,3 +20,6 @@ line-length = 120
 [tool.ruff.lint]
 select = ["ALL"]
 ignore = ["COM812", "D1", "D203", "D213", "INP", "ISC001"]
+
+[tool.ruff.lint.per-file-ignores]
+"app/main.py" = ["ANN201"]
