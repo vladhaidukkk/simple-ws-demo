@@ -8,6 +8,15 @@ ws.addEventListener("message", (event) => {
   messageList.appendChild(messageItem);
 });
 
+function setUsername(event) {
+  event.preventDefault();
+  const usernameInput = document.getElementById("usernameInput");
+  const usernameButton = document.getElementById("usernameButton");
+  document.cookie = `username=${usernameInput.value}`;
+  usernameInput.disabled = true;
+  usernameButton.disabled = true;
+}
+
 function sendMessage(event) {
   event.preventDefault();
   const messageInput = document.getElementById("messageInput");
