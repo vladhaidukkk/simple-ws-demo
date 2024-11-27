@@ -1,11 +1,17 @@
-from fastapi import FastAPI, WebSocket
+from fastapi import FastAPI, WebSocket, WebSocketDisconnect
+
+from .manager import ConnectionManager
 
 app = FastAPI()
+manager = ConnectionManager()
 
 
 @app.websocket("/ws")
 async def websocket_endpoint(websocket: WebSocket) -> None:
-    await websocket.accept()
-    while True:
-        data = await websocket.receive_text()
-        await websocket.send_text(f"Message text was: {data}")
+    await manager.connect(websocket)
+    try:
+        while True:
+            data = await websocket.receive_text()
+            await manager.broadcast_text(data)
+    except WebSocketDisconnect:
+        manager.disconnect(websocket)
