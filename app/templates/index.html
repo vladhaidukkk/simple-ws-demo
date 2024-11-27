@@ -11,10 +11,12 @@
             <h1 class="text-3xl">WebSocket Chat</h1>
             <div class="grid grid-cols-3 gap-4">
                 <div class="col-span-1 flex flex-col gap-4">
+                    <p class="rounded border bg-yellow-50 px-4 py-2 text-sm text-slate-700 shadow-sm">To change username, clear cookies and reload the page</p>
                     <form action="" onsubmit="setUsername(event)" class="grid grid-cols-4 gap-4 rounded border bg-slate-100 p-4 shadow-sm">
                         <input
                             id="usernameInput"
                             type="text"
+                            placeholder="Enter your username..."
                             autocomplete="off"
                             class="col-span-3 rounded border bg-slate-50 p-2 underline-offset-2 focus:border-violet-700 focus:outline-none focus:ring-1 focus:ring-violet-700 disabled:underline"
                         />
@@ -28,6 +30,7 @@
                     <form action="" onsubmit="sendMessage(event)" class="flex flex-col gap-4 rounded border bg-slate-100 p-4 shadow-sm">
                         <textarea
                             id="messageInput"
+                            placeholder="Type your message here..."
                             autocomplete="off"
                             class="rounded border bg-slate-50 p-2 focus:border-violet-700 focus:outline-none focus:ring-1 focus:ring-violet-700"
                         ></textarea>
