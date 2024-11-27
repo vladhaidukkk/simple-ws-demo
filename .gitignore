@@ -1,0 +1,22 @@
+# System files
+.DS_Store
+Thumbs.db
+
+# IDEs and editors
+.idea/
+
+# Visual Studio Code
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+!.vscode/*.code-snippets
+!.vscode/*.code-workspace
+
+# Virtual environments
+.venv/
+
+# Python cache dirs and files
+__pycache__/
+*.py[cod]
